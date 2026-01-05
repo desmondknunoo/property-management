@@ -1,35 +1,69 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { ThemeProvider } from './context/ThemeContext';
+import { AuthProvider } from './context/AuthContext';
 
-function App() {
-  const [count, setCount] = useState(0)
+// Layouts
+import { Header } from './components/layout/Header/Header';
+import { Footer } from './components/layout/Footer/Footer';
 
+// Pages (will be created in Phase 3)
+import HomePage from './pages/public/HomePage';
+import PropertyListingPage from './pages/public/PropertyListingPage';
+import PropertyDetailPage from './pages/public/PropertyDetailPage';
+import HostelListingPage from './pages/public/HostelListingPage';
+import AboutPage from './pages/public/AboutPage';
+import ContactPage from './pages/public/ContactPage';
+import LoginPage from './pages/auth/LoginPage';
+import RegisterPage from './pages/auth/RegisterPage';
+
+// Dashboard layouts (will be created in Phase 5+)
+import CustomerDashboard from './pages/customer/CustomerDashboard';
+import OwnerDashboard from './pages/owner/OwnerDashboard';
+import BankDashboard from './pages/bank/BankDashboard';
+import StudentDashboard from './pages/student/StudentDashboard';
+
+import './index.css';
+
+function PublicLayout({ children }) {
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Header />
+      <main style={{ minHeight: 'calc(100vh - 200px)' }}>
+        {children}
+      </main>
+      <Footer />
     </>
-  )
+  );
 }
 
-export default App
+function App() {
+  return (
+    <BrowserRouter>
+      <ThemeProvider>
+        <AuthProvider>
+          <Routes>
+            {/* Public Routes */}
+            <Route path="/" element={<PublicLayout><HomePage /></PublicLayout>} />
+            <Route path="/properties" element={<PublicLayout><PropertyListingPage /></PublicLayout>} />
+            <Route path="/properties/:id" element={<PublicLayout><PropertyDetailPage /></PublicLayout>} />
+            <Route path="/hostels" element={<PublicLayout><HostelListingPage /></PublicLayout>} />
+            <Route path="/about" element={<PublicLayout><AboutPage /></PublicLayout>} />
+            <Route path="/contact" element={<PublicLayout><ContactPage /></PublicLayout>} />
+
+            {/* Auth Routes */}
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+
+            {/* Dashboard Routes */}
+            <Route path="/dashboard/customer/*" element={<CustomerDashboard />} />
+            <Route path="/dashboard/owner/*" element={<OwnerDashboard />} />
+            <Route path="/dashboard/bank/*" element={<BankDashboard />} />
+            <Route path="/dashboard/student/*" element={<StudentDashboard />} />
+          </Routes>
+        </AuthProvider>
+      </ThemeProvider>
+    </BrowserRouter>
+  );
+}
+
+export default App;
