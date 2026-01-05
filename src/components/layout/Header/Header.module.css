@@ -28,12 +28,18 @@
   display: none;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  border: none;
-  background: none;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-elevated);
   color: var(--color-text-primary);
+  border-radius: var(--radius-md);
   cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.mobileMenu:hover {
+  background: var(--color-bg-tertiary);
 }
 
 .logo {
@@ -179,6 +185,7 @@
   padding: var(--space-lg);
   flex-direction: column;
   gap: var(--space-sm);
+  overflow-y: auto;
 }
 
 .mobileNav.open {
