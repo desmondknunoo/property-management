@@ -1,0 +1,345 @@
+.page {
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+/* ===== Hero ===== */
+.hero {
+  padding: var(--space-3xl) 0;
+  background: linear-gradient(135deg, var(--color-bg-secondary), var(--color-bg-primary));
+  text-align: center;
+}
+
+.heroContent {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: var(--space-lg);
+}
+
+.highlight {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.heroText {
+  font-size: 1.25rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+/* ===== Sections ===== */
+.section {
+  padding: var(--space-3xl) 0;
+}
+
+.sectionAlt {
+  padding: var(--space-3xl) 0;
+  background: var(--color-bg-secondary);
+}
+
+.sectionHeader {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto var(--space-2xl);
+}
+
+.sectionHeader h2 {
+  font-size: 2rem;
+  margin-bottom: var(--space-sm);
+}
+
+.sectionHeader p {
+  color: var(--color-text-secondary);
+}
+
+/* ===== Mission ===== */
+.missionGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+}
+
+.missionItem {
+  text-align: center;
+  padding: var(--space-xl);
+}
+
+.missionItem svg {
+  color: var(--color-primary);
+  margin-bottom: var(--space-md);
+}
+
+.missionItem h3 {
+  font-size: 1.25rem;
+  margin-bottom: var(--space-sm);
+}
+
+.missionItem p {
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+/* ===== Features ===== */
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-xl);
+}
+
+.featureCard {
+  height: 100%;
+}
+
+.featureIcon {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-md);
+}
+
+[data-theme="dark"] .featureIcon {
+  background: rgba(22, 163, 74, 0.15);
+}
+
+.featureCard h3 {
+  font-size: 1.125rem;
+  margin-bottom: var(--space-sm);
+}
+
+.featureCard > p {
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-lg);
+  line-height: 1.6;
+}
+
+.featureList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.featureList li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+.featureList li svg {
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+/* ===== Stats ===== */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-xl);
+  text-align: center;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.statValue {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.statLabel {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ===== CTA ===== */
+.cta {
+  padding: var(--space-3xl) 0;
+  text-align: center;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color: white;
+}
+
+.cta h2 {
+  font-size: 2rem;
+  color: white;
+  margin-bottom: var(--space-md);
+}
+
+.cta p {
+  font-size: 1.125rem;
+  opacity: 0.9;
+  margin-bottom: var(--space-xl);
+}
+
+.ctaButtons {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: center;
+}
+
+.ctaButtons button[class*="outline"] {
+  border-color: white;
+  color: white;
+}
+
+.ctaButtons button[class*="outline"]:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ===== Contact Page ===== */
+.contactGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2xl);
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.contactItem {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.contactIcon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  border-radius: var(--radius-md);
+  flex-shrink: 0;
+}
+
+[data-theme="dark"] .contactIcon {
+  background: rgba(22, 163, 74, 0.15);
+}
+
+.contactItem h4 {
+  font-size: 1rem;
+  margin-bottom: var(--space-xs);
+}
+
+.contactItem p {
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+}
+
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+}
+
+/* ===== FAQ ===== */
+.faqGrid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faqItem {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.faqQuestion {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--space-lg);
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: left;
+  color: var(--color-text-primary);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.faqQuestion:hover {
+  background: var(--color-bg-secondary);
+}
+
+.faqAnswer {
+  padding: 0 var(--space-lg) var(--space-lg);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1024px) {
+  .missionGrid,
+  .featuresGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .contactGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+  
+  .heroText {
+    font-size: 1rem;
+  }
+  
+  .statValue {
+    font-size: 2rem;
+  }
+  
+  .ctaButtons {
+    flex-direction: column;
+  }
+  
+  .formRow {
+    grid-template-columns: 1fr;
+  }
+}
