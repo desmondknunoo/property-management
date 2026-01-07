@@ -116,6 +116,22 @@
   line-height: 1.6;
 }
 
+/* Scroll Indicator */
+.scrollIndicator {
+  position: absolute;
+  bottom: var(--space-xl);
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  z-index: 10;
+  transition: color var(--transition-fast);
+}
+
+.scrollIndicator:hover {
+  color: var(--color-primary);
+}
+
 /* Search Box */
 .searchBox {
   background: var(--glass-bg);
