@@ -59,17 +59,32 @@ export function Header() {
                     </Link>
 
                     <nav className={styles.nav}>
-                        {publicNavLinks.map(link => (
-                            <NavLink
-                                key={link.to}
-                                to={link.to}
-                                className={({ isActive }) =>
-                                    `${styles.navLink} ${isActive ? styles.navLinkActive : ''}`
+                        {publicNavLinks.map(link => {
+                            // Custom isActive logic to handle query params correctly
+                            const isActive = () => {
+                                const currentPath = location.pathname + location.search;
+                                // Exact match for links with query params
+                                if (link.to.includes('?')) {
+                                    return currentPath === link.to;
                                 }
-                            >
-                                {link.label}
-                            </NavLink>
-                        ))}
+                                // For home, only match exactly
+                                if (link.to === '/') {
+                                    return location.pathname === '/';
+                                }
+                                // For other links, check if pathname starts with the link path
+                                return location.pathname.startsWith(link.to);
+                            };
+
+                            return (
+                                <NavLink
+                                    key={link.to}
+                                    to={link.to}
+                                    className={`${styles.navLink} ${isActive() ? styles.navLinkActive : ''}`}
+                                >
+                                    {link.label}
+                                </NavLink>
+                            );
+                        })}
                     </nav>
                 </div>
 
@@ -113,22 +128,34 @@ export function Header() {
 
             {/* Mobile Navigation */}
             <nav className={`${styles.mobileNav} ${mobileMenuOpen ? styles.open : ''}`}>
-                {publicNavLinks.map(link => (
-                    <NavLink
-                        key={link.to}
-                        to={link.to}
-                        className={({ isActive }) =>
-                            `${styles.mobileNavLink} ${isActive ? styles.active : ''}`
+                {publicNavLinks.map(link => {
+                    // Custom isActive logic to handle query params correctly
+                    const isActive = () => {
+                        const currentPath = location.pathname + location.search;
+                        if (link.to.includes('?')) {
+                            return currentPath === link.to;
                         }
-                        onClick={() => setMobileMenuOpen(false)}
-                    >
-                        {link.label === 'Home' && <Home size={20} />}
-                        {link.label === 'Buy' && <Building2 size={20} />}
-                        {link.label === 'Rent' && <Building2 size={20} />}
-                        {link.label === 'Hostels' && <GraduationCap size={20} />}
-                        {link.label}
-                    </NavLink>
-                ))}
+                        if (link.to === '/') {
+                            return location.pathname === '/';
+                        }
+                        return location.pathname.startsWith(link.to);
+                    };
+
+                    return (
+                        <NavLink
+                            key={link.to}
+                            to={link.to}
+                            className={`${styles.mobileNavLink} ${isActive() ? styles.active : ''}`}
+                            onClick={() => setMobileMenuOpen(false)}
+                        >
+                            {link.label === 'Home' && <Home size={20} />}
+                            {link.label === 'Buy' && <Building2 size={20} />}
+                            {link.label === 'Rent' && <Building2 size={20} />}
+                            {link.label === 'Hostels' && <GraduationCap size={20} />}
+                            {link.label}
+                        </NavLink>
+                    );
+                })}
                 {!isAuthenticated && (
                     <>
                         <Link

@@ -54,6 +54,9 @@ const iconHoverVariants = {
 export default function HomePage() {
     const featuredProperties = properties.filter(p => p.isFeatured).slice(0, 3);
 
+    // Active search tab state
+    const [activeTab, setActiveTab] = useState('buy');
+
     // Floating particles state (generated client-side to avoid hydration errors)
     const [particles, setParticles] = useState([]);
 
@@ -216,21 +219,24 @@ export default function HomePage() {
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className={`${styles.searchTab} ${styles.active}`}
+                                className={`${styles.searchTab} ${activeTab === 'buy' ? styles.active : ''}`}
+                                onClick={() => setActiveTab('buy')}
                             >
                                 Buy
                             </motion.button>
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className={styles.searchTab}
+                                className={`${styles.searchTab} ${activeTab === 'rent' ? styles.active : ''}`}
+                                onClick={() => setActiveTab('rent')}
                             >
                                 Rent
                             </motion.button>
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className={styles.searchTab}
+                                className={`${styles.searchTab} ${activeTab === 'hostels' ? styles.active : ''}`}
+                                onClick={() => setActiveTab('hostels')}
                             >
                                 Hostels
                             </motion.button>
